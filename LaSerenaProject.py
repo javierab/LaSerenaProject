@@ -1,6 +1,8 @@
 import csv
 import matplotlib.pyplot as plt
+import os
 
+cwd = os.getcwd() + '/'
 # Indices for list with no planets
 NONEMETAL = 10
 NONETEMP = 6
@@ -15,7 +17,7 @@ CONMASS = 22
 
 # Put rows into lists to make them easier to deal with
 noPlanets = []
-with open('/Users/Sean/Desktop/LaSerenaProject/keplerNone.csv', 'r') as csvfile:
+with open(cwd + 'keplerNone.csv', 'r') as csvfile:
 	reader = csv.reader(csvfile)
 	for row in reader:
 		print row
@@ -25,7 +27,7 @@ with open('/Users/Sean/Desktop/LaSerenaProject/keplerNone.csv', 'r') as csvfile:
 
 
 confirmedPlanets = []
-with open('/Users/Sean/Desktop/LaSerenaProject/keplerConfirmed.csv', 'r') as csvfile:
+with open(cwd + 'keplerConfirmed.csv', 'r') as csvfile:
 	reader = csv.reader(csvfile)
 	for row in reader:
 		if row[0][0]!='#':
