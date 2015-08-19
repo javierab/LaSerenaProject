@@ -51,6 +51,5 @@ for x in confirmedPlanets:
 	#confirmedGraph[3].append(float(x[CONMASS]))
 
 plt.scatter(noPlanetsGraph[0], noPlanetsGraph[1], c='r')
-plt.show()
 plt.scatter(confirmedGraph[0], confirmedGraph[1], c='b')
 plt.show()
