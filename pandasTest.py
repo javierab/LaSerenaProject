@@ -1,7 +1,6 @@
 import pandas as pds
 import numpy as np
 from numpy import corrcoef, sum, log, arange
-from numpy.random import rand
 from pylab import pcolor, show, colorbar, xticks, yticks
 import os
 
