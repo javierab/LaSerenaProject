@@ -1,4 +1,5 @@
 import csv
+import matplotlib.pyplot as plt
 
 # Indices for list with no planets
 NONEMETAL = 10
@@ -14,7 +15,7 @@ CONMASS = 22
 
 # Put rows into lists to make them easier to deal with
 noPlanets = []
-with open('/Users/Sean/Desktop/keplerNone.csv', 'r') as csvfile:
+with open('/Users/Sean/Desktop/LaSerenaProject/keplerNone.csv', 'r') as csvfile:
 	reader = csv.reader(csvfile)
 	for row in reader:
 		print row
@@ -24,7 +25,7 @@ with open('/Users/Sean/Desktop/keplerNone.csv', 'r') as csvfile:
 
 
 confirmedPlanets = []
-with open('/Users/Sean/Desktop/keplerConfirmed.csv', 'r') as csvfile:
+with open('/Users/Sean/Desktop/LaSerenaProject/keplerConfirmed.csv', 'r') as csvfile:
 	reader = csv.reader(csvfile)
 	for row in reader:
 		if row[0][0]!='#':
@@ -33,9 +34,21 @@ with open('/Users/Sean/Desktop/keplerConfirmed.csv', 'r') as csvfile:
 	for row in reader:
 		confirmedPlanets.append(row)
 
-noPlanetsGraph = []
-confirmedGraph = []
+# Put relevant data into lists for graphing
+noPlanetsGraph = [[] for i in range(4)]
+confirmedGraph = [[] for i in range(4)]
 for x in noPlanets:
-	noPlanetsGraph.append(float, [x[NONETEMP], x[NONEMETAL], x[NONERAD], x[NONEMASS]])
+	noPlanetsGraph[0].append(float(x[NONETEMP]))
+	noPlanetsGraph[1].append(float(x[NONEMETAL]))
+	#noPlanetsGraph[2].append(float(x[NONERAD]))
+	#noPlanetsGraph[3].append(float(x[NONEMASS]))
 for x in confirmedPlanets:
-	noPlanetsGraph.append(float, [x[NONETEMP], x[NONEMETAL], x[NONERAD], x[NONEMASS]])
+	confirmedGraph[0].append(float(x[CONTEMP]))
+	confirmedGraph[1].append(float(x[CONMETAL]))
+	#confirmedGraph[2].append(float(x[CONRAD]))
+	#confirmedGraph[3].append(float(x[CONMASS]))
+
+plt.scatter(noPlanetsGraph[0], noPlanetsGraph[1], c='r')
+plt.show()
+plt.scatter(confirmedGraph[0], confirmedGraph[1], c='b')
+plt.show()
