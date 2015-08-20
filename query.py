@@ -35,15 +35,8 @@ for key in nameDict:
 	result = Vizier.query_object(key)
 	resultsList.append(result)
 
-table = tbl()
-Table.from_table(resultsList[0][0], table)
-
-# Create a new VOTable file...
-votable = VOTableFile()
-resource = Resource()
-votable.resources.append(resource)
-
-# ...with one resource...
-resource.tables.append(table)
-
-votable.to_xml("new_votable.xml")
+i = 1
+for result in resultsList:
+	for table in result:
+		table.write(open('new_votable'+str(i)+'.csv','w+'), format = 'csv')
+		i+=1
