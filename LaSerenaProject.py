@@ -43,7 +43,7 @@ noPlanetsGraph = [[] for i in range(4)]
 confirmedGraph = [[] for i in range(4)]
 print "go"
 for x in noPlanets:
-	if x[NONEMETAL-1]=="KIC":		# Other methods of measuring metallicity have incorrent listings.
+	if len(x[0]) > 15:		# Newest data release
 		noPlanetsGraph[0].append(float(x[NONETEMP]))
 		noPlanetsGraph[1].append(numpy.power(10, float(x[NONEMETAL])))
 		noPlanetsGraph[2].append(float(x[NONERAD]))

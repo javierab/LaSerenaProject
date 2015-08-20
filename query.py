@@ -4,8 +4,9 @@ from mpl_toolkits.mplot3d import Axes3D
 import os
 import numpy
 from astroquery.vizier import Vizier
-from astropy.io.votable.tree import VOTableFile, Resource, Table, Field
+from astroquery.vizier import VizierClass
 from astropy.table import Table as tbl
+from astropy.coordinates import Angle
 
 cwd = os.getcwd() + '/'
 
@@ -27,12 +28,15 @@ for key in nameDict:
 	print key
 print len(nameDict)
 
-Vizier.ucd = '(phys.temperature.effective|phys.gravity|phys.abund.Z|phys.veloc.rotat|time.period|time.age|\
-			spect.dopplerVeloc*|src.var|src.var.index|meta.code.multip)'
+ucd = '(phys.temperature.effective|phys.gravity|phys.abund.Z|phys.veloc.rotat|time.period|time.age|spect.dopplerVeloc*|src.var|src.var.index|meta.code.multip)'
+ucdList = ucd.split('|')
+ucdList = ucdList[1:-1]
+print ucdList
 
+vizier = VizierClass(ucd = ucd, columns = ['Teff', 'logg','vsini', 'feh','multiplicity', 'mass', 'Fe/H','Fe_H', 'M', 'mv', 'v'])
 resultsList = []
 for key in nameDict:
-	result = Vizier.query_object(key)
+	result = vizier.query_object(key, radius = Angle(0.00014, 'deg'))
 	resultsList.append(result)
 
 i = 1
