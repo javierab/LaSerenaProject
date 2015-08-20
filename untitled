@@ -1,0 +1,16 @@
+import csv
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import os
+import numpy
+
+# Put rows into lists to make them easier to deal with
+noPlanets = []
+with open(cwd + 'keplerNone.csv', 'r') as csvfile:
+	reader = csv.reader(csvfile)
+	for row in reader:
+		#print row
+		break
+	for row in reader:
+		if r[2]:
+			noPlanets.append(row[2])
