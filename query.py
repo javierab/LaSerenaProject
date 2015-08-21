@@ -12,7 +12,7 @@ cwd = os.getcwd() + '/'
 
 NAME = 3
 #NAME = 2
-
+''
 nameDict = {}
 with open(cwd + 'keplerConfirmedSmall.csv', 'r') as csvfile:
 	reader = csv.reader(csvfile)
@@ -33,7 +33,7 @@ ucdList = ucd.split('|')
 ucdList = ucdList[1:-1]
 print ucdList
 
-vizier = VizierClass(ucd = ucd, columns = ['Teff', 'logg','vsini', 'feh','multiplicity', 'mass', 'Fe/H','Fe_H', 'M', 'mv', 'v'])
+vizier = VizierClass(ucd = ucd, columns = ['Teff', 'logg','vsini', '[Fe/H]', 'M', 'Period', 'Vmag'])
 resultsList = []
 for key in nameDict:
 	result = vizier.query_object(key, radius = Angle(0.00014, 'deg'))
